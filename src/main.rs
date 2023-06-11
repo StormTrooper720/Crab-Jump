@@ -62,7 +62,7 @@ async fn game_loop(
             *score += 1;
         }
         
-        let result = obstacles[i - 1].collision(&player);
+        let result = obstacles[i - 1].collision(player);
         if result {
             player.update(get_frame_time());
             *game_state = lib::globals::GameState::Dead;
@@ -76,7 +76,6 @@ async fn game_loop(
     }
 
     let score_string: String = score.to_string();
-    let score_ref: &str = &score_string;
     draw_text(&score_string, 0.0, 25.0, 50.0, BLACK);
 
     for obstacle in obstacles {

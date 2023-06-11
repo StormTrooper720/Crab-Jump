@@ -31,8 +31,13 @@ impl Obstacle {
         return false;
     }
 
-    pub fn collision(&mut self, player: &Player) -> bool {
-        return self.rect.overlaps(&player.rect);
+    pub fn collision(&mut self, player: &mut Player) -> bool {
+        if self.rect.overlaps(&player.rect) {
+            player.is_dead = true;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     pub fn draw(&self) {

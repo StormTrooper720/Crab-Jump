@@ -13,7 +13,7 @@ pub struct Player {
     in_threshold: bool,
     allow_jump: bool,
     inital_jump_boost: bool,
-    is_dead: bool,
+    pub is_dead: bool,
 }
 
 impl Player {
@@ -25,10 +25,10 @@ impl Player {
                 PLAYER[2],
                 PLAYER[3]
             ),
-            current_texture: load_texture("res/normal.png").await.unwrap(),
-            alive_texture: load_texture("res/normal.png").await.unwrap(),
-            dead_texture: load_texture("res/died.png").await.unwrap(),
-            jump_texture: load_texture("res/jump.png").await.unwrap(),
+            current_texture: get_image(String::from("normal")),
+            alive_texture: get_image(String::from("normal")),
+            dead_texture: get_image(String::from("died")),
+            jump_texture: get_image(String::from("jump")),
             velocity: Vec2::from_array([0f32, 0f32]),
             touching_ground: false,
             in_threshold: false,
